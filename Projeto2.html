@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body onload="buscarChampions()">
+    <div id="divmaster" style="height: 100%; display: flex; width: 60%; flex-direction: row;">
+        <div id="lengthchamps"
+            style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 70%; border: 3px solid black;">
+            <p style="font-size: 20px; font-weight: bold; color: red;">Champion List</p>
+        </div>
+        <div id="search"
+            style="border: 6px solid black; margin-left: 30px; width: 60%; flex-direction: column; justify-content: center; height: 900px;">
+            <h1 style="display: flex; justify-content: center;">Search Champion By ID</h1>
+            <div id="ID" style="display: flex; flex-direction: row; align-items: center;">
+                <h3 style="margin-left: 10px;">ID</h3>
+                <input id="idSearch" type="number" style="height: 15px; margin-left: 15px; width: 40px;">
+                <button onclick="searchId()">Ok</button>
+            </div>
+            <div id="imageSearch" style="display: flex;  justify-content: center; align-items: center;">
+                <img id="imagesrc" style="border: 2px solid black; width: 350px; height: 350px;"
+                   >
+                   <div id="status" style="display: flex;">
+
+
+                   </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</body>
+
+</html>
+<script>
+
+    var champions
+
+    async function buscarChampions() {
+
+        const lista = document.getElementById("lengthchamps")
+        const response = await fetch("http://localhost:8080/api/champions")
+
+        const data = await response.json()
+        champions = data
+
+        data.forEach(champion => {
+            lista.innerHTML += `<span style="border: 2px solid black; padding: 12px 0; width: 100%; background-image: url('${champion.imageUrl}'); background-size: cover; background-position: center; color: red; font-weight: bold">${champion.name}</span>`
+        })
+
+    }
+
+    async function searchId() {
+
+        var id = document.getElementById("idSearch").value
+        var imagem = document.getElementById("imagesrc")
+        const response = await fetch(`http://localhost:8080/api/champions/${id}`)
+        const data = await response.json()
+
+        imagem.src = data.imageUrl
+
+
+    }
+
+
+
+
+
+
+
+</script>
