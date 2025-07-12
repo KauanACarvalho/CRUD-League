@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="Estilo.css">
 </head>
 
 <body onload="buscarChampions()">
@@ -37,40 +38,5 @@
 </body>
 
 </html>
-<script>
-
-    var champions
-
-    async function buscarChampions() {
-
-        const lista = document.getElementById("lengthchamps")
-        const response = await fetch("http://localhost:8080/api/champions")
-
-        const data = await response.json()
-        champions = data
-
-        data.forEach(champion => {
-            lista.innerHTML += `<span style="border: 2px solid black; padding: 12px 0; width: 100%; background-image: url('${champion.imageUrl}'); background-size: cover; background-position: center; color: red; font-weight: bold">${champion.name}</span>`
-        })
-
-    }
-
-    async function searchId() {
-
-        var id = document.getElementById("idSearch").value
-        var imagem = document.getElementById("imagesrc")
-        const response = await fetch(`http://localhost:8080/api/champions/${id}`)
-        const data = await response.json()
-
-        imagem.src = data.imageUrl
-
-
-    }
-
-
-
-
-
-
-
+<script src="comandos.js">
 </script>
