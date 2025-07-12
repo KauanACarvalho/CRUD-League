@@ -1,0 +1,9 @@
+.mouse {
+    background-size: 100%;
+    transition:all 0.2s;
+}
+
+.mouse:hover {
+    cursor: pointer;
+    transform: scale(1.028);
+}
