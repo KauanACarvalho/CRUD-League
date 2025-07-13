@@ -1,3 +1,20 @@
+/* Scrollbar customizado para a div de campeões */
+#lengthchamps::-webkit-scrollbar {
+    width: 12px;
+    background: black;
+}
+#lengthchamps::-webkit-scrollbar-thumb {
+    background: red;
+    border-radius: 6px;
+}
+#lengthchamps::-webkit-scrollbar-button {
+    background: red;
+}
+/* Firefox */
+#lengthchamps {
+    scrollbar-color: red black;
+    scrollbar-width: thin;
+}
 .mouse {
     background-size: 100%;
     transition:all 0.2s;
@@ -5,5 +22,5 @@
 
 .mouse:hover {
     cursor: pointer;
-    transform: scale(1.028);
+    transform: scale(1.03);
 }
