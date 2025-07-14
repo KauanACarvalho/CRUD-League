@@ -23,14 +23,11 @@ async function searchId() {
     var id = document.getElementById("idSearch").value
 
     juncao(id)
-
 }
 
 async function searchIdRef(id) {
 
     juncao(id)
-
-
 }
 
 function testimg() {
@@ -45,17 +42,22 @@ function testimg() {
 
 async function juncao(id) {
 
+
     var imagem = document.getElementById("imagesrc")
     var namebigger = document.getElementById("champname")
     var deleteBtn = document.getElementById("delete")
     var code = document.getElementById("code")
+    var title = document.getElementById("champtitle")
+    var estilo = document.getElementById("champtag")
     const response = await fetch(`http://localhost:8080/api/champions/${id}`)
     const data = await response.json()
 
+    estilo.innerHTML = ""
     imagem.src = data.imageUrl
     namebigger.textContent = data.name
     deleteBtn.style.visibility = "visible"
     code.innerHTML = data.id
+    title.innerHTML = data.title
     table.innerHTML = `<tbody>
                         <tr>
                             <td class="tdNome">HP</td>
@@ -83,6 +85,9 @@ async function juncao(id) {
                         </tr>
                     </tbody>`
 
+    data.tags.forEach(tag => {
+        estilo.innerHTML += `<div style="background-color: red; padding: 5px; border-radius: 35%">${tag}</div>`
+    })
 }
 
 async function send() {
