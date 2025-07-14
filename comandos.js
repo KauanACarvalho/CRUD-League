@@ -1,7 +1,7 @@
 var champions
 
 async function buscarChampions() {
-    
+
     const lista = document.getElementById("lengthchamps")
     const response = await fetch("http://localhost:8080/api/champions")
 
@@ -34,7 +34,7 @@ async function searchIdRef(id) {
 }
 
 function testimg() {
-    
+
     var img = document.getElementById("cimg")
     var input = document.getElementById("curl")
 
@@ -86,7 +86,7 @@ async function juncao(id) {
 }
 
 async function send() {
-    
+
     var hpInput = document.getElementById("chp")
     var mpInput = document.getElementById("cmp")
     var armorInput = document.getElementById("carmor")
@@ -123,26 +123,31 @@ async function send() {
 
     const id = await response.text()
 
-    juncao(id)
+    const status = response.status
 
-    buscarChampions()
+    if (status == 201) {
+        juncao(id)
+        buscarChampions()
+        hpInput.value = ""
+        mpInput.value = ""
+        armorInput.value = ""
+        speedInput.value = ""
+        damageInput.value = ""
+        rangeInput.value = ""
+        nameInput.value = ""
+        imgInput.src = ""
+        titleInput.value = ""
+        descriptionInput.value = ""
+        tagsInput.value = ""
+        alert("Created Successfuly!!")
+    } else {
+        alert(`Error Status ${status}`)
+    }
 
-    alert(`${name} created successfuly!!`)
 
-    hpInput.value = ""
-    mpInput.value = ""
-    armorInput.value = ""
-    speedInput.value = ""
-    damageInput.value = ""
-    rangeInput.value = ""
-    nameInput.value = ""
-    imgInput.src = ""
-    titleInput.value = ""
-    descriptionInput.value = ""
-    tagsInput.value = ""
 }
 
- async function deleteById(){
+async function deleteById() {
 
     var id = document.getElementById("code").textContent
 
