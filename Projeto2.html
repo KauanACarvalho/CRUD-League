@@ -20,27 +20,89 @@
             border: 3px solid black; background-color: black; overflow-y: auto; overflow-x: hidden; max-height: 900px;">
             </div>
         </div>
-        <div id="search"
-            style="border: 6px solid black; margin-left: 30px; width: 30%; flex-direction: column; justify-content: center; height: 900px;">
+        <div id="search" style="background-color: black; margin-left: 30px; width: 30%; flex-direction: column; justify-content: center;
+             height: 900px;">
             <h1 style="display: flex; justify-content: center; color: red;">Search Champion By ID</h1>
             <div id="ID" style="display: flex; flex-direction: row; align-items: center;">
-                <h3 style="margin-left: 10px;">ID</h3>
+                <h3 style="margin-left: 10px; color: white;">ID</h3>
                 <input id="idSearch" type="number" style="height: 15px; margin-left: 15px; width: 40px;">
-                <button style="margin-left: 10px;" onclick="searchId()">Ok</button>
+                <button class="button" style="margin-left: 10px; background-color: green; color: white; border: 2px solid black;
+                 font-weight: bold; padding: 3px 8px;" onclick="searchId()">Ok</button>
             </div>
             <div id="imageSearch" style="display: flex;  justify-content: center; align-items: center;">
                 <img id="imagesrc"
                     style="border: 2px solid black; height: 305px; margin-top: 15px; aspect-ratio: auto;">
             </div>
-            <div style="display: flex; flex-direction: column; align-items: center; margin-top: 45px;">
-                <p id="hp/mp"></p>
-                <p id="speed"></p>
-                <p id="damage"></p>
-                <h1 id="champname" style="font-size: 60px; margin-top: 130px;"></h1>
+            <div style="display: flex; flex-direction: column; align-items: center; margin-top: 45px; color: white;">
+                <table id="table" style="width: 150px; color: white;">
+                </table>
+                <h1 id="champname" style="font-size: 60px; margin-top: 100px;"></h1>
+                <button id="delete" class="button" style="background-color: red; color: white; height: 30px; width: 70px; margin-left: 450px;
+                font-size: 14px; font-weight: bold; margin-top: -15px; visibility: hidden;" onclick="deleteById()">DELETE</button>
             </div>
-
         </div>
-
+        <div id="create" style="display: flex; width: 33%; height: 890px; border: 6px solid black; margin-left: 15px;
+         flex-direction: column;">
+            <h1 style="display: flex; justify-content: center; color: red; justify-content: center;">Create Your
+                Champion</h1>
+            <div style="display: flex; flex-direction: row; align-items: center;">
+                <h3 style="margin-left: 10px;">Image (Url)</h3>
+                <input id="curl" type="url" style="margin-left: 15px; height: 15px;">
+                <button class="button" style="margin-left: 10px;" onclick="testimg()">Test</button>
+            </div>
+            <div style="display: flex; justify-content: center;">
+                <img id="cimg" style="border: 2px solid black; height: 305px; aspect-ratio: auto; margin-top: 15px;">
+            </div>
+            <div style="display: flex; justify-content: center;">
+                <span id="code" style="visibility: hidden;"></span>
+                <table style="margin: 33px;">
+                    <tbody>
+                        <tr>
+                            <td class="tdNome">Name</td>
+                            <td class="tdValor"><input style="width: 80px;" id="cname"></td>
+                        </tr>
+                        <tr>
+                            <td class="tdNome">Title</td>
+                            <td class="tdValor"><input style="width: 80px;" id="ctitle"></td>
+                        </tr>
+                        <tr>
+                            <td class="tdNome">Description</td>
+                            <td class="tdValor"><input style="width: 80px;" id="cdescrip"></td>
+                        </tr>
+                        <tr>
+                            <td class="tdNome">Tags</td>
+                            <td class="tdValor"><input style="width: 80px;" id="ctag"></td>
+                        </tr>
+                        <tr>
+                            <td class="tdNome">HP</td>
+                            <td class="tdValor"><input style="width: 80px;" id="chp"></td>
+                        </tr>
+                        <tr>
+                            <td class="tdNome">MP</td>
+                            <td class="tdValor"><input style="width: 80px;" id="cmp"></td>
+                        </tr>
+                        <tr>
+                            <td class="tdNome">Armor</td>
+                            <td class="tdValor"><input style="width: 80px;" id="carmor"></td>
+                        </tr>
+                        <tr>
+                            <td class="tdNome">Move Speed</td>
+                            <td class="tdValor"><input style="width: 80px;" id="cmvspd"></td>
+                        </tr>
+                        <tr>
+                            <td class="tdNome">Attack Damage</td>
+                            <td class="tdValor"><input style="width: 80px;" id="cattdmg"></td>
+                        </tr>
+                        <tr>
+                            <td class="tdNome">Attack Range</td>
+                            <td class="tdValor"><input style="width: 80px;" id="cattrg"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <button class="button" onclick="send()" style="background-color: green; color: white; font-weight: bold; width: 60px; height: 25px; margin-left: 540px;
+            margin-top: 70px;">SEND</button>
+        </div>
     </div>
 </body>
 
